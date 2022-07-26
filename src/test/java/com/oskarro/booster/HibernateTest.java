@@ -47,7 +47,7 @@ public class HibernateTest {
             String element = (String) propertyNames.nextElement();
             properties.put(element, configuration.getProperties().getProperty(element));
         }
-        return Persistence.createEntityManagerFactory("boosterPersistenceUnit", properties);
+        return Persistence.createEntityManagerFactory("boosterPersistenceUnitTest", properties);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class HibernateTest {
     @Test
     public void test_storeLoadProduct_WithEntityManager() {
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("boosterPersistenceUnit");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("boosterPersistenceUnitTest");
 
         try {
             EntityManager entityManager = entityManagerFactory.createEntityManager();

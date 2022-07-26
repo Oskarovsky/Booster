@@ -15,12 +15,7 @@ public class ProductServiceBean implements ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAll() {
-        return null;
-    }
-
 
     public void saveProduct(Product product) {
-        productRepository.addProduct(product);
     }
 }
