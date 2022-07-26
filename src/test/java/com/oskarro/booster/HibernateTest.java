@@ -14,7 +14,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import java.time.LocalDateTime;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,6 +29,25 @@ public class HibernateTest {
         configuration.configure().addAnnotatedClass(Product.class);
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         return configuration.buildSessionFactory(serviceRegistry);
+    }
+
+    private static SessionFactory getSessionFactory(EntityManagerFactory entityManagerFactory) {
+        return entityManagerFactory.unwrap(SessionFactory.class);
+    }
+
+    private static EntityManagerFactory createEntityManagerFactory() {
+        Configuration configuration = new Configuration();
+        configuration.configure()
+                .addAnnotatedClass(Product.class)
+                .addAnnotatedClass(Meal.class);
+
+        Map<String, String> properties = new HashMap<>();
+        Enumeration<?> propertyNames = configuration.getProperties().propertyNames();
+        while (propertyNames.hasMoreElements()) {
+            String element = (String) propertyNames.nextElement();
+            properties.put(element, configuration.getProperties().getProperty(element));
+        }
+        return Persistence.createEntityManagerFactory("boosterPersistenceUnit", properties);
     }
 
     @Test
