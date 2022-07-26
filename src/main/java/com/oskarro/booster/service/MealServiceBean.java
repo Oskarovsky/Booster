@@ -15,7 +15,6 @@ public class MealServiceBean implements MealService {
     }
 
     public void saveMeal(Meal meal) {
-        mealRepository.addMeal(meal);
     }
 
 }
