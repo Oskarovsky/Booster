@@ -1,1 +1,0 @@
-INSERT INTO product (id, name, energy, protein, fat, carbs) VALUES (1, 'Tomato', 1, 1.12, 2.22, 3.32)

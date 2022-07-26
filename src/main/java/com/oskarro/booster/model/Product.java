@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,5 +24,8 @@ public class Product {
     private Double fat;
 
     private Double carbs;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    private List<Meal> meal;
 
 }
