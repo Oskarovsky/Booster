@@ -25,7 +25,7 @@ public class Product {
 
     private Double carbs;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
-    private List<Meal> meal;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+//    private List<Meal> meal;
 
 }

@@ -17,7 +17,7 @@ public class ProductGateway {
     }
 
     @PostMapping("/api/product")
-    public void saveProduct(@RequestBody Product product) {
-        productService.saveProduct(product);
+    public Product saveProduct(@RequestBody Product product) {
+        return productService.saveProduct(product);
     }
 }
