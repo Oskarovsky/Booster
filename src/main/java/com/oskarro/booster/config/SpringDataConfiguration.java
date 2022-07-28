@@ -2,6 +2,7 @@ package com.oskarro.booster.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -57,6 +58,7 @@ public class SpringDataConfiguration {
      * Factory bean that produces an EntityManagerFactory following the JPA standard container bootstrap contract.
      * */
     @Bean
+    @Primary
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         localContainerEntityManagerFactoryBean.setDataSource(dataSource());

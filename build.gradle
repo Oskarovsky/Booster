@@ -25,6 +25,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.hibernate:hibernate-core'
 	implementation 'org.hibernate:hibernate-entitymanager'
+	implementation 'com.toedter:spring-hateoas-jsonapi:1.5.1'
+
 //	implementation 'org.flywaydb:flyway-core'
 	implementation 'junit:junit:4.13.2'
 	compileOnly 'org.projectlombok:lombok'

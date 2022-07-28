@@ -15,7 +15,7 @@ public class ProductServiceBean implements ProductService {
         this.productRepository = productRepository;
     }
 
-
-    public void saveProduct(Product product) {
+    public Product saveProduct(Product product) {
+        return productRepository.save(product);
     }
 }
