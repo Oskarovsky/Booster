@@ -4,5 +4,7 @@ import com.oskarro.booster.model.Meal;
 
 public interface MealService {
 
-    Meal saveMeal(Meal meal);
+    Meal getById(Integer mealId);
+
+    Meal save(Meal meal);
 }
