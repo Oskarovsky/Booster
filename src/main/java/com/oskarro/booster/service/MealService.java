@@ -8,7 +8,5 @@ public interface MealService {
 
     Meal getById(Integer mealId);
 
-    List<Meal> getAll()
-
     Meal save(Meal meal);
 }
