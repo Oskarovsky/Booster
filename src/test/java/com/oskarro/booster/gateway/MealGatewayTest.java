@@ -40,6 +40,6 @@ public class MealGatewayTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.portion", is(meal.getPortion())))
-                .andExpect(jsonPath("$.productId").value(is(meal.getProduct().getId()), Integer.class));
+                .andExpect(jsonPath("$.product").value(is(meal.getProduct().getId()), Integer.class));
     }
 }
