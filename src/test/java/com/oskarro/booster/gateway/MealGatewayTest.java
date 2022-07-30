@@ -34,7 +34,7 @@ public class MealGatewayTest {
         Meal meal = new Meal();
         meal.setProductById(1);
 
-        given(mealService.getMealById(1)).willReturn(meal);
+        given(mealService.getById(1)).willReturn(meal);
 
         mvc.perform(get("/api/meal/1")
                         .contentType(MediaType.APPLICATION_JSON))

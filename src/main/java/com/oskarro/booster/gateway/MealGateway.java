@@ -16,12 +16,12 @@ public class MealGateway {
 
     @GetMapping(value = "/{id}")
     public Meal getMealById(@PathVariable Integer id) {
-        return mealService.getMealById(id);
+        return mealService.getById(id);
     }
 
     @PostMapping("")
     public Meal saveMeal(@RequestBody Meal meal) {
-        return mealService.saveMeal(meal);
+        return mealService.save(meal);
     }
 
 }

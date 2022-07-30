@@ -19,7 +19,7 @@ public class MealServiceBean implements MealService {
         this.productRepository = productRepository;
     }
     
-    public Meal getMealById(Integer mealId) {
+    public Meal getById(Integer mealId) {
         Optional<Meal> meal = mealRepository.findById(mealId);
         if (meal.isPresent()) {
             return meal.get();
@@ -28,7 +28,7 @@ public class MealServiceBean implements MealService {
         }
     }
 
-    public Meal saveMeal(Meal meal) {
+    public Meal save(Meal meal) {
         Optional<Product> byId = productRepository.findById(meal.getProduct().getId());
         return mealRepository.save(meal);
     }
