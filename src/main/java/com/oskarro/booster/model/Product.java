@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Product implements Serializable, BaseEntity<Product> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -60,4 +61,20 @@ public class Product {
         return product;
     }
 
+    @Override
+    public void update(Product source) {
+        this.fat = source.getFat();
+        this.carbs = source.getCarbs();
+        this.energy = source.getEnergy();
+        this.name = source.getName();
+        this.protein = source.getProtein();
+        this.meals = source.getMeals();
+    }
+
+    @Override
+    public Product createNewInstance() {
+        Product newInstance = new Product();
+        newInstance.update(this);
+        return newInstance;
+    }
 }

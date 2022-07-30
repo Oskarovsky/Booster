@@ -12,6 +12,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
@@ -19,11 +20,11 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Meal {
+public class Meal implements Serializable, BaseEntity<Meal> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer mealId;
+    private Integer id;
 
     private Double portion;
 
@@ -40,5 +41,19 @@ public class Meal {
     @JsonProperty("productId")
     public void setProductById(Integer productId) {
         this.product = Product.fromId(productId);
+    }
+
+    @Override
+    public void update(Meal source) {
+        this.portion = source.getPortion();
+        this.dateTime = source.getDateTime();
+        this.product = source.getProduct();
+    }
+
+    @Override
+    public Meal createNewInstance() {
+        Meal newInstance = new Meal();
+        newInstance.update(this);
+        return newInstance;
     }
 }
