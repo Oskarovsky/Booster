@@ -1,9 +1,6 @@
 package com.oskarro.booster.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,9 +12,10 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product implements Serializable, BaseEntity<Product> {
+public class Product implements Serializable, BaseEntity<Product, Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,15 +1,15 @@
 package com.oskarro.booster.gateway;
 
 import com.oskarro.booster.model.Product;
-import com.oskarro.booster.repository.BaseRepository;
+import com.oskarro.booster.service.BaseService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "/api/product")
-public class ProductGateway extends BaseGateway<Product> {
+public class ProductGateway extends BaseGateway<Product, Integer> {
 
-    public ProductGateway(BaseRepository<Product> repository) {
-        super(repository);
+    public ProductGateway(BaseService<Product, Integer> service) {
+        super(service);
     }
 }

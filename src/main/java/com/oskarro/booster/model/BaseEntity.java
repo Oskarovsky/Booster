@@ -1,8 +1,8 @@
 package com.oskarro.booster.model;
 
-public interface BaseEntity<T> {
+public interface BaseEntity<T, K> {
 
-    Integer getId();
+    K getId();
 
     // update current instance with provided data
     void update(T source);

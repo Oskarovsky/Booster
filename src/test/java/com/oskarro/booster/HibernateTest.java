@@ -93,23 +93,26 @@ public class HibernateTest {
         try (SessionFactory sessionFactory = createSessionFactory();
              Session session = sessionFactory.openSession()) {
 
-            // GI
+            // GIVEN
             session.beginTransaction();
             Product product = new Product();
             product.setEnergy(99);
+            product.setName("Bread");
             session.persist(product);
             session.getTransaction().commit();
 
+            // WHEN
             CriteriaQuery<Product> criteriaQueryProduct = session.getCriteriaBuilder().createQuery(Product.class);
             criteriaQueryProduct.from(Product.class);
-
             List<Product> products = session.createQuery(criteriaQueryProduct).getResultList();
 
+            // THEN
             assertAll(
                     () -> assertEquals(1, products.size()),
                     () -> assertEquals(99, products.get(0).getEnergy())
             );
 
+            // GIVEN
             session.beginTransaction();
             Meal meal = new Meal();
             meal.setDateTime(LocalDateTime.now());
@@ -118,11 +121,12 @@ public class HibernateTest {
             session.persist(meal);
             session.getTransaction().commit();
 
+            // WHEN
             CriteriaQuery<Meal> criteriaQueryMeal = session.getCriteriaBuilder().createQuery(Meal.class);
             criteriaQueryMeal.from(Meal.class);
-
             List<Meal> meals = session.createQuery(criteriaQueryMeal).getResultList();
 
+            // THEN
             assertAll(
                     () -> assertEquals(1, meals.size()),
                     () -> assertEquals(2d, meals.get(0).getPortion()),
