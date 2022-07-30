@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Meal implements Serializable, BaseEntity<Meal> {
+public class Meal implements Serializable, BaseEntity<Meal, Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

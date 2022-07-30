@@ -17,7 +17,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product implements Serializable, BaseEntity<Product> {
+public class Product implements Serializable, BaseEntity<Product, Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
