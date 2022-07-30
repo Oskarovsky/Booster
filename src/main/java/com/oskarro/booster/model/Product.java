@@ -1,6 +1,8 @@
 package com.oskarro.booster.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,11 +14,13 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer productId;
+    private Integer id;
 
     @NotNull
     @Size(min = 2, max = 255, message = "Name is required, maximum 255 characters")
@@ -48,6 +52,12 @@ public class Product {
     public void removeMeal(Meal meal) {
         meals.remove(meal);
         meal.setProduct(this);
+    }
+
+    public static Product fromId(Integer productId) {
+        Product product = new Product();
+        product.setId(productId);
+        return product;
     }
 
 }

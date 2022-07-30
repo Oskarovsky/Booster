@@ -1,6 +1,5 @@
 package com.oskarro.booster.gateway;
 
-import com.oskarro.booster.model.Meal;
 import com.oskarro.booster.model.Product;
 import com.oskarro.booster.service.ProductService;
 import org.springframework.web.bind.annotation.PostMapping;

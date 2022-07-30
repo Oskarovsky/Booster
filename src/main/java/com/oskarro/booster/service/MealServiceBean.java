@@ -18,9 +18,18 @@ public class MealServiceBean implements MealService {
         this.mealRepository = mealRepository;
         this.productRepository = productRepository;
     }
+    
+    public Meal getMealById(Integer mealId) {
+        Optional<Meal> meal = mealRepository.findById(mealId);
+        if (meal.isPresent()) {
+            return meal.get();
+        } else {
+            throw new NullPointerException("Could not find meal");
+        }
+    }
 
     public Meal saveMeal(Meal meal) {
-        Optional<Product> byId = productRepository.findById(meal.getProduct().getProductId());
+        Optional<Product> byId = productRepository.findById(meal.getProduct().getId());
         return mealRepository.save(meal);
     }
 

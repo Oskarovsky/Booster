@@ -2,10 +2,7 @@ package com.oskarro.booster.gateway;
 
 import com.oskarro.booster.model.Meal;
 import com.oskarro.booster.service.MealService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/meal")
@@ -15,6 +12,11 @@ public class MealGateway {
 
     public MealGateway(MealService mealService) {
         this.mealService = mealService;
+    }
+
+    @GetMapping(value = "/{id}")
+    public Meal getMealById(@PathVariable Integer id) {
+        return mealService.getMealById(id);
     }
 
     @PostMapping("")
