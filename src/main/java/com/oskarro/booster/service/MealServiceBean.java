@@ -28,6 +28,8 @@ public class MealServiceBean implements MealService {
         }
     }
 
+    public
+
     public Meal save(Meal meal) {
         Optional<Product> byId = productRepository.findById(meal.getProduct().getId());
         return mealRepository.save(meal);

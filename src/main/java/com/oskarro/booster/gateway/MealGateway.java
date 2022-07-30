@@ -2,7 +2,11 @@ package com.oskarro.booster.gateway;
 
 import com.oskarro.booster.model.Meal;
 import com.oskarro.booster.service.MealService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/api/meal")
@@ -15,8 +19,15 @@ public class MealGateway {
     }
 
     @GetMapping(value = "/{id}")
-    public Meal getMealById(@PathVariable Integer id) {
-        return mealService.getById(id);
+    public ResponseEntity<Meal> getMealById(@PathVariable Integer id) {
+        return new ResponseEntity<>(mealService.getById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "")
+    public ResponseEntity<List<Meal>> getAllMeals() {
+
+
+        re
     }
 
     @PostMapping("")
