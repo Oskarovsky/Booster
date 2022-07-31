@@ -62,12 +62,10 @@ public class ProductServiceTest {
         mealService.create(mealOne);
         mealService.create(mealTwo);
         mealService.create(mealThree);
+        productCurrent = productService.getById(productCurrent.getId());
 
         // THEN
-        Integer id = productCurrent.getId();
-        Product byId = productService.getById(id);
-        Hibernate.initialize(byId.getMeals().size());
-        assertEquals(byId.getMeals().size(), 3);
+        assertEquals(productCurrent.getMeals().size(), 3);
     }
 
 }
