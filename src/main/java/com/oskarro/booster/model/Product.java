@@ -33,7 +33,7 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
 
     private Double carbs;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", orphanRemoval = true)
     private List<Meal> meals = new ArrayList<>();
 
     public void addMeal(Meal meal) {
