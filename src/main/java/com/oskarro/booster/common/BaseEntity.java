@@ -1,4 +1,4 @@
-package com.oskarro.booster.model;
+package com.oskarro.booster.common;
 
 public interface BaseEntity<T, K> {
 

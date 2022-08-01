@@ -1,7 +1,7 @@
 package com.oskarro.booster.gateway;
 
 import com.oskarro.booster.model.Meal;
-import com.oskarro.booster.service.BaseService;
+import com.oskarro.booster.common.BaseService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

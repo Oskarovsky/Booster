@@ -1,6 +1,5 @@
-package com.oskarro.booster.repository;
+package com.oskarro.booster.common;
 
-import com.oskarro.booster.model.BaseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 

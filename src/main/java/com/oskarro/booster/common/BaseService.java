@@ -1,6 +1,6 @@
-package com.oskarro.booster.service;
+package com.oskarro.booster.common;
 
-import com.oskarro.booster.model.BaseEntity;
+import com.oskarro.booster.common.BaseEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

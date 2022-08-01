@@ -1,7 +1,5 @@
-package com.oskarro.booster.service;
+package com.oskarro.booster.common;
 
-import com.oskarro.booster.model.BaseEntity;
-import com.oskarro.booster.repository.BaseRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
