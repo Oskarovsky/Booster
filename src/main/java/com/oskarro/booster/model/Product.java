@@ -1,5 +1,6 @@
 package com.oskarro.booster.model;
 
+import com.oskarro.booster.common.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +33,13 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
     private Double fat;
 
     private Double carbs;
+
+    private Double price;
+
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    @ManyToOne
+    private Provider provider;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", orphanRemoval = true)
     private List<Meal> meals = new ArrayList<>();
