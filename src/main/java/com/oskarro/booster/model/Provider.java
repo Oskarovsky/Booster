@@ -12,7 +12,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "provider")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

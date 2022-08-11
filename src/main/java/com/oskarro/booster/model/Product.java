@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "product")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

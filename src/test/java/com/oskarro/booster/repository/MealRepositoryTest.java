@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.annotation.Rollback;
 
 import java.time.LocalDateTime;
@@ -31,18 +30,18 @@ public class MealRepositoryTest {
     @Order(1)
     @Rollback(value = false)
     public void test_saveMealEntity_and_saveProductEntity() {
-        // GIVEN
+        // GIVEN (Input)
         Product product = Product.builder().energy(420).protein(13.2).name("Bread").carbs(54.2).build();
         Product productCurrent = productRepository.save(product);
 
-        // WHEN
+        // WHEN (Action)
         Meal meal = Meal.builder().portion(2d).dateTime(LocalDateTime.now()).product(productCurrent).build();
         Meal mealCurrent = mealRepository.save(meal);
 
         Product productResult = productRepository.findById(1).get();
         Meal mealResult = mealRepository.findById(1).get();
 
-        // THEN
+        // THEN (Output)
         assertThat(productResult).isNotNull();
         assertThat(mealResult).isNotNull();
         assertThat(mealResult.getProduct()).isNotNull();
@@ -52,10 +51,10 @@ public class MealRepositoryTest {
     @Test
     @Order(2)
     public void test_getMeal() {
-        // WHEN
+        // WHEN (Action)
         Meal mealResult = mealRepository.findById(1).get();
 
-        // THEN
+        // THEN (Output)
         assertThat(mealResult).isNotNull();
         assertThat(mealResult.getId()).isEqualTo(1);
     }
@@ -63,35 +62,35 @@ public class MealRepositoryTest {
     @Test
     @Order(3)
     public void test_getListOfMeals() {
-        // WHEN
+        // WHEN (Action)
         List<Meal> mealResult = mealRepository.findAll();
 
-        // THEN
+        // THEN (Output)
         assertThat(mealResult.size()).isGreaterThan(0);
     }
 
     @Test
     @Order(4)
     public void test_updateMeal() {
-        // GIVEN
+        // GIVEN (Input)
         Meal meal = mealRepository.findById(1).get();
 
-        // WHEN
+        // WHEN (Action)
         meal.setPortion(30d);
         Meal mealCurrent = mealRepository.save(meal);
 
-        // THEN
+        // THEN (Output)
         assertThat(mealCurrent.getPortion()).isEqualTo(30d);
     }
 
     @Test
     @Order(5)
     public void test_deleteMeal() {
-        // GIVEN
+        // GIVEN (Input)
         Meal meal = mealRepository.findById(1).get();
         assertThat(meal).isNotNull();
 
-        // WHEN
+        // WHEN (Action)
         mealRepository.delete(meal);
         Optional<Meal> optionalMeal = mealRepository.findById(1);
         Meal mealResult = null;
@@ -100,7 +99,7 @@ public class MealRepositoryTest {
             mealResult = optionalMeal.get();
         }
 
-        // THEN
+        // THEN (Output)
         assertThat(mealResult).isNull();
     }
 }
