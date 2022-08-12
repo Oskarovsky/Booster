@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@Entity
+@Entity(name = "meal")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
