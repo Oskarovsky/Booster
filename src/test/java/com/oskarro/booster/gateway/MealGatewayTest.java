@@ -1,6 +1,5 @@
 package com.oskarro.booster.gateway;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oskarro.booster.model.Meal;
 import com.oskarro.booster.service.MealService;
 import org.junit.jupiter.api.Test;
@@ -9,7 +8,6 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
@@ -38,10 +36,8 @@ public class MealGatewayTest {
     @Autowired
     private MockMvc mvc;
 
-    ObjectMapper mapper = new ObjectMapper();
-
     @Test
-    public void getMealById() throws Exception {
+    public void test_gateway_getMealById() throws Exception {
         Meal meal = new Meal();
         meal.setProductById(1);
 
@@ -54,7 +50,7 @@ public class MealGatewayTest {
     }
 
     @Test
-    public void getAllMeals() throws Exception {
+    public void test_gateway_getAllMeals() throws Exception {
         Meal mealOne = new Meal();
         mealOne.setProductById(1);
 
@@ -73,7 +69,6 @@ public class MealGatewayTest {
                 .andExpect(jsonPath("$.content.size()", is(3)))
                 .andExpect(jsonPath("$.content[0].product", is(1)))
                 .andExpect(jsonPath("$.content[1].product", is(1)))
-                .andExpect(jsonPath("$.content[2].product", is(2)))
-                .andDo(MockMvcResultHandlers.print());
+                .andExpect(jsonPath("$.content[2].product", is(2)));
     }
 }
