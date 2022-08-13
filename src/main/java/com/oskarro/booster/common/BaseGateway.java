@@ -1,7 +1,5 @@
-package com.oskarro.booster.gateway;
+package com.oskarro.booster.common;
 
-import com.oskarro.booster.common.BaseEntity;
-import com.oskarro.booster.common.BaseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

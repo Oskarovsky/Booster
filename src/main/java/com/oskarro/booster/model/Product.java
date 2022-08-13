@@ -1,7 +1,13 @@
 package com.oskarro.booster.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.oskarro.booster.common.BaseEntity;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -36,9 +42,13 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
 
     private Double price;
 
-    @ToString.Exclude
-    @EqualsAndHashCode.Exclude
-    @ManyToOne
+//    @ToString.Exclude
+//    @EqualsAndHashCode.Exclude
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "provider_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIdentityReference(alwaysAsId = true)
     private Provider provider;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "product", orphanRemoval = true)
@@ -61,6 +71,11 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
         meal.setProduct(this);
     }
 
+    @JsonProperty("providerId")
+    public void setProviderById(Integer providerId) {
+        this.provider = Provider.fromId(providerId);
+    }
+
     public static Product fromId(Integer productId) {
         Product product = new Product();
         product.setId(productId);
@@ -75,6 +90,8 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
         this.name = source.getName();
         this.protein = source.getProtein();
         this.meals = source.getMeals();
+        this.provider = source.getProvider();
+        this.price = source.getPrice();
     }
 
     @Override
