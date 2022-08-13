@@ -52,13 +52,22 @@
         <addForeignKeyConstraint baseColumnNames="id" baseTableName="product" constraintName="FK_PRODUCT_PROVIDER"
                                  deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="provider" />
 
-<!--        <createTable>-->
-<!--            <column name="id" type="INT">-->
-<!--                <constraints/>-->
-<!--            </column>-->
-<!--        </createTable>-->
-
-
+        <createTable tableName="meal">
+            <column name="id" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="portion" type="double">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="datetime" type="DATETIME">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="product" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
 
     </changeSet>
+
+
 </databaseChangeLog>
