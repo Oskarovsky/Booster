@@ -52,11 +52,11 @@
         <addForeignKeyConstraint baseColumnNames="id" baseTableName="product" constraintName="FK_PRODUCT_PROVIDER"
                                  deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="provider" />
 
-        <createTable>
-            <column name="id" type="INT">
-                <constraints/>
-            </column>
-        </createTable>
+<!--        <createTable>-->
+<!--            <column name="id" type="INT">-->
+<!--                <constraints/>-->
+<!--            </column>-->
+<!--        </createTable>-->
 
 
 
