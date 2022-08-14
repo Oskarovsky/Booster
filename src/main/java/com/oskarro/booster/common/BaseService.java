@@ -9,7 +9,7 @@ public interface BaseService<T extends BaseEntity<T, K>, K> {
 
     List<T> get();
     T create(T entity);
-    T update (T entity);
+    T update (K id, T entity);
     T getById(K id);
     void delete(T entity);
     void deleteById(K id);

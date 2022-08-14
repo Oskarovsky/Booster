@@ -42,7 +42,10 @@ public class BaseServiceBean<T extends BaseEntity<T, K>, K> implements BaseServi
 
     @Override
     @Transactional
-    public T update(T updated) {
+    public T update(K id, T updated) {
+        if (id != updated.getId()) {
+            throw new IllegalArgumentException("Entity identifier is not valid");
+        }
         T dbDomain = getById(updated.getId());
         dbDomain.update(updated);
         return baseRepository.save(dbDomain);

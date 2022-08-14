@@ -28,9 +28,9 @@ public abstract class BaseGateway<T extends BaseEntity<T, K>, K> {
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 
-    @PutMapping("")
-    public ResponseEntity<T> update(@RequestBody T updated){
-        return new ResponseEntity<>(service.update(updated), HttpStatus.OK);
+    @PatchMapping("/{id}")
+    public ResponseEntity<T> update(@RequestBody T updated, @PathVariable K id){
+        return new ResponseEntity<>(service.update(id, updated), HttpStatus.OK);
     }
 
     @PostMapping("")
