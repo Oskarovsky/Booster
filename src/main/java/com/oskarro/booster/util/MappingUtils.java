@@ -34,8 +34,7 @@ public class MappingUtils {
             Constructor<T> constructor = dto.getConstructor();
             T instance = constructor.newInstance();
             return instance.updateModelMapper(mapper, this);
-        }catch (NoSuchMethodException | InstantiationException | IllegalAccessException
-                | InvocationTargetException e){
+        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e){
             throw new MappingException(dto.getName());
         }
     }
