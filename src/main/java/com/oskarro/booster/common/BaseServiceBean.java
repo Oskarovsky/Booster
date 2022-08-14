@@ -1,5 +1,6 @@
 package com.oskarro.booster.common;
 
+import com.oskarro.booster.exception.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +24,9 @@ public class BaseServiceBean<T extends BaseEntity<T, K>, K> implements BaseServi
     @Override
     @Transactional
     public T getById(K id) {
-        return baseRepository.findById(id).orElseThrow(NullPointerException::new);
+        return baseRepository
+                .findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Could not find entity with id " + id));
     }
 
     @Override
