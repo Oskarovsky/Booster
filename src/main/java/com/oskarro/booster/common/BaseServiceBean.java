@@ -1,6 +1,5 @@
 package com.oskarro.booster.common;
 
-import com.oskarro.booster.exception.ResourceNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

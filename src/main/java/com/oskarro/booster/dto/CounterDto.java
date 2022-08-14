@@ -18,13 +18,13 @@ public class CounterDto {
 
     private LocalDateTime endDate;
 
-    private Integer energy;
+    private Integer energy = 0;
 
-    private Double protein;
+    private Double protein = 0d;
 
-    private Double fat;
+    private Double fat = 0d;
 
-    private Double carbs;
+    private Double carbs = 0d;
 
     private List<Meal> meals = new ArrayList<>();
 

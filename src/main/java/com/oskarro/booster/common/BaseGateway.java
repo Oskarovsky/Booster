@@ -46,7 +46,7 @@ public abstract class BaseGateway<T extends BaseEntity<T, K>, K> {
                 .toUri();
         responseHeaders.setLocation(uri);
 
-        return new ResponseEntity<>(service.create(created), responseHeaders, HttpStatus.CREATED);
+        return new ResponseEntity<>(result, responseHeaders, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

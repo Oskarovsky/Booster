@@ -65,12 +65,34 @@ public class MealServiceTest {
                 .portion(1.5)
                 .build();
         mealOne.setProductById(1);
+
+        Meal mealTwo = Meal.builder()
+                .dateTime(LocalDateTime.of(2022, 3, 1, 1, 10))
+                .portion(1.5)
+                .build();
+        mealTwo.setProductById(1);
+
+        Meal mealThree = Meal.builder()
+                .dateTime(LocalDateTime.of(2021, 6, 2, 1, 44))
+                .portion(1.5)
+                .build();
+        mealThree.setProductById(2);
+
+        Meal mealFour = Meal.builder()
+                .dateTime(LocalDateTime.of(2020, 8, 6, 2, 9))
+                .portion(1.5)
+                .build();
+        mealFour.setProductById(1);
+
         mealService.create(mealOne);
+        mealService.create(mealTwo);
+        mealService.create(mealThree);
+        mealService.create(mealFour);
 
         // WHEN
         List<Meal> mealsResult = mealService.getMealFromPeriodOfTime(
                 LocalDateTime.of(2018, 1, 1, 2, 1),
-                LocalDateTime.of(2022, 1, 1, 1, 1));
+                LocalDateTime.of(2020, 1, 1, 1, 1));
 
         // THEN
         assertEquals(1, mealsResult.size());
