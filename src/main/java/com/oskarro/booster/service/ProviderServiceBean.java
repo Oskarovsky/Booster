@@ -6,7 +6,7 @@ import com.oskarro.booster.model.Provider;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ProviderServiceBean extends BaseServiceBean<Provider, Integer> implements ProviderService{
+public class ProviderServiceBean extends BaseServiceBean<Provider, Integer> implements ProviderService {
 
     public ProviderServiceBean(BaseRepository<Provider, Integer> baseRepository) {
         super(baseRepository);
