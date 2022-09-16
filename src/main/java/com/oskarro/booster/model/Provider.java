@@ -41,11 +41,16 @@ public class Provider implements Serializable, BaseEntity<Provider, Integer> {
 
     @Override
     public void update(Provider provider) {
-
+        this.name = provider.getName();
+        this.address = provider.getAddress();
+        this.city = provider.getCity();
+        this.products = provider.getProducts();
     }
 
     @Override
     public Provider createNewInstance() {
-        return null;
+        Provider newInstance = new Provider();
+        newInstance.update(this);
+        return newInstance;
     }
 }
