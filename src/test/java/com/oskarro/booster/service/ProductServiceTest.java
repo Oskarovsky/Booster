@@ -2,6 +2,7 @@ package com.oskarro.booster.service;
 
 import com.oskarro.booster.config.SpringDataConfiguration;
 import com.oskarro.booster.model.Product;
+import com.oskarro.booster.model.Provider;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class ProductServiceTest {
     @Autowired
     MealService mealService;
 
+    @Autowired
+    ProviderService providerService;
+
     @Test
     public void test_saveAndLoadProduct() {
         // GIVEN
@@ -40,5 +44,35 @@ public class ProductServiceTest {
                 () -> assertEquals(1, products.size()),
                 () -> assertEquals("Hazel", products.get(0).getName())
         );
+    }
+
+    @Test
+    public void test_saveAndLoadProductFromProvider() {
+        // GIVEN
+        Provider providerOne = new Provider();
+        providerOne.setId(1);
+        providerOne.setName("Prov1");
+        Provider providerTwo = new Provider();
+        providerTwo.setId(2);
+        providerTwo.setName("Prov2");
+        providerService.create(providerOne);
+        providerService.create(providerTwo);
+
+        Product productOne = new Product();
+        productOne.setName("ProdName_First");
+        productOne.setProviderById(1);
+        Product productTwo = new Product();
+        productTwo.setName("ProdName_Second");
+        productTwo.setProviderById(1);
+        productService.create(productOne);
+        productService.create(productTwo);
+
+        // WHEN
+        List<Product> productsResult = productService.getAllProductsByProviderId(1);
+
+        // THEN
+        assertEquals(2, productsResult.size());
+        assertEquals("ProdName_First", productsResult.get(0).getName());
+        assertEquals("ProdName_Second", productsResult.get(1).getName());
     }
 }

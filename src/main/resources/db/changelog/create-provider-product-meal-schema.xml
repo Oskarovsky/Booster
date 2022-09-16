@@ -49,6 +49,7 @@
             </column>
         </createTable>
 
+
         <addForeignKeyConstraint baseColumnNames="id" baseTableName="product" constraintName="FK_PRODUCT_PROVIDER"
                                  deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="provider" />
 
@@ -58,7 +59,34 @@
 <!--            </column>-->
 <!--        </createTable>-->
 
+        <createTable tableName="meal">
+            <column name="id" type="INT">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="portion" type="double">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="datetime" type="DATETIME">
+                <constraints nullable="false" unique="false"/>
+            </column>
+            <column name="product" type="int">
+                <constraints nullable="false" unique="false"/>
+            </column>
+        </createTable>
 
+        <addAutoIncrement tableName="provider" columnName="id" columnDataType="int" />
+        <addAutoIncrement tableName="product" columnName="id" columnDataType="int" />
+        <addAutoIncrement tableName="meal" columnName="id" columnDataType="int" />
+
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="product"
+                                 referencedColumnNames="id" referencedTableName="provider"
+                                 constraintName="FK_PRODUCT_PROVIDER" deferrable="false" initiallyDeferred="false" />
+
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="meal"
+                                 referencedColumnNames="id" referencedTableName="product"
+                                 constraintName="FK_MEAL_PRODUCT" deferrable="false" initiallyDeferred="false" />
 
     </changeSet>
+
+
 </databaseChangeLog>

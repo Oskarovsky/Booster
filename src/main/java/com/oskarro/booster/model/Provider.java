@@ -35,6 +35,12 @@ public class Provider implements Serializable, BaseEntity<Provider, Integer> {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "provider")
     private Set<Product> products = new HashSet<>();
 
+    public static Provider fromId(Integer providerId) {
+        Provider provider = new Provider();
+        provider.setId(providerId);
+        return provider;
+    }
+
     public void updateRelations() {
         products.forEach(product -> product.setProvider(this));
     }

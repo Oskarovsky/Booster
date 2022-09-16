@@ -1,0 +1,13 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  liquibase:
+    change-log: classpath:/db/changelog/changelog-master.yaml
+
+server:
+  error:
+    include-message: always
+    include-exception: false
+
+

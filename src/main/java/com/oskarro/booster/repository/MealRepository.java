@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface MealRepository extends BaseRepository<Meal, Integer> {
 
-    List<Meal> findByDateTimeBetween(LocalDateTime dateTime, LocalDateTime dateTime2);
+    List<Meal> findByDateTimeBetween(LocalDateTime startDateTime, LocalDateTime endDateTime);
 
 }
