@@ -29,7 +29,7 @@ public class ProductServiceMockTest {
 
         // WHEN
         when(productRepository.save(ArgumentMatchers.any(Product.class))).thenReturn(product);
-        Product productCreated = productService.create(product);
+        Product productCreated = productService.save(product);
 
         assertThat(productCreated.getName()).isSameAs(product.getName());
         verify(productRepository).save(product);

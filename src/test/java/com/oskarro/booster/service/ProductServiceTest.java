@@ -36,7 +36,7 @@ public class ProductServiceTest {
         product.setFat(99d);
 
         // WHEN
-        productService.create(product);
+        productService.save(product);
         List<Product> products = productService.get();
 
         // THEN
@@ -55,8 +55,8 @@ public class ProductServiceTest {
         Provider providerTwo = new Provider();
         providerTwo.setId(2);
         providerTwo.setName("Prov2");
-        providerService.create(providerOne);
-        providerService.create(providerTwo);
+        providerService.save(providerOne);
+        providerService.save(providerTwo);
 
         Product productOne = new Product();
         productOne.setName("ProdName_First");
@@ -64,8 +64,8 @@ public class ProductServiceTest {
         Product productTwo = new Product();
         productTwo.setName("ProdName_Second");
         productTwo.setProviderById(1);
-        productService.create(productOne);
-        productService.create(productTwo);
+        productService.save(productOne);
+        productService.save(productTwo);
 
         // WHEN
         List<Product> productsResult = productService.getAllProductsByProviderId(1);
