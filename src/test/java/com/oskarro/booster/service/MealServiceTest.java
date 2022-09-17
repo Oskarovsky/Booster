@@ -40,8 +40,8 @@ public class MealServiceTest {
         Provider providerTwo = new Provider();
         providerTwo.setId(2);
         providerTwo.setName("Prov2");
-        providerService.create(providerOne);
-        providerService.create(providerTwo);
+        providerService.save(providerOne);
+        providerService.save(providerTwo);
 
         // CREATING PRODUCTS
         Product productOne = new Product();
@@ -53,8 +53,8 @@ public class MealServiceTest {
         productTwo.setProviderById(1);
         productTwo.setEnergy(10);
 
-        productService.create(productOne);
-        productService.create(productTwo);
+        productService.save(productOne);
+        productService.save(productTwo);
     }
 
     @Test
@@ -84,10 +84,10 @@ public class MealServiceTest {
                 .build();
         mealFour.setProductById(1);
 
-        mealService.create(mealOne);
-        mealService.create(mealTwo);
-        mealService.create(mealThree);
-        mealService.create(mealFour);
+        mealService.save(mealOne);
+        mealService.save(mealTwo);
+        mealService.save(mealThree);
+        mealService.save(mealFour);
 
         // WHEN
         List<Meal> mealsResult = mealService.getMealFromPeriodOfTime(

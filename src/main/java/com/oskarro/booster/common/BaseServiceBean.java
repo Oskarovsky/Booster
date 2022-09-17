@@ -34,9 +34,15 @@ public class BaseServiceBean<T extends BaseEntity<T, K>, K> implements BaseServi
 
     @Override
     @Transactional
-    public T create(T newDomain) {
+    public T save(T newDomain) {
         T dbDomain = newDomain.createNewInstance();
         return baseRepository.save(dbDomain);
+    }
+
+    @Override
+    @Transactional
+    public Iterable<T> saveAll(List<T> entities) {
+        return baseRepository.saveAll(entities);
     }
 
     @Override
@@ -53,7 +59,7 @@ public class BaseServiceBean<T extends BaseEntity<T, K>, K> implements BaseServi
     @Override
     @Transactional
     public void delete(T entity) {
-
+        baseRepository.delete(entity);
     }
 
     @Override

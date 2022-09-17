@@ -35,7 +35,7 @@ public abstract class BaseGateway<T extends BaseEntity<T, K>, K> {
 
     @PostMapping("")
     public ResponseEntity<T> create(@RequestBody T created){
-        T result = service.create(created);
+        T result = service.save(created);
 
         // Set the location header for the newly created resource
         HttpHeaders responseHeaders = new HttpHeaders();

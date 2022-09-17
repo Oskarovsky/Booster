@@ -1,0 +1,37 @@
+[
+    {
+      "name": "Zabka",
+      "city": "Warsaw",
+      "address": "Komisji Edukacji Narodowej 52"
+    },
+    {
+      "name": "Lidl",
+      "city": "Wroclaw",
+      "address": "Szymanskiego 33/1"
+    },
+    {
+      "name": "Targ Smaku",
+      "city": "Puławy",
+      "address": "Kaniowczyków 3"
+    },
+    {
+      "name": "Biedronka",
+      "city": "Warsaw",
+      "address": "Migdałowa 13"
+    },
+    {
+      "name": "Kaufland",
+      "city": "Dęblin",
+      "address": "15 Pułku"
+    },
+    {
+      "name": "Dino",
+      "city": "Gniewoszów",
+      "address": "Puławska"
+    },
+    {
+      "name": "Poziomka",
+      "city": "Borek",
+      "address": "Połać"
+    }
+]

@@ -50,8 +50,9 @@
         </createTable>
 
 
-        <addForeignKeyConstraint baseColumnNames="id" baseTableName="product" constraintName="FK_PRODUCT_PROVIDER"
-                                 deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="provider" />
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="product"
+                                 constraintName="FK_PRODUCT_PROVIDER" deferrable="false"
+                                 initiallyDeferred="false" referencedColumnNames="id" referencedTableName="provider" />
 
 <!--        <createTable>-->
 <!--            <column name="id" type="INT">-->
@@ -77,10 +78,6 @@
         <addAutoIncrement tableName="provider" columnName="id" columnDataType="int" />
         <addAutoIncrement tableName="product" columnName="id" columnDataType="int" />
         <addAutoIncrement tableName="meal" columnName="id" columnDataType="int" />
-
-        <addForeignKeyConstraint baseColumnNames="id" baseTableName="product"
-                                 referencedColumnNames="id" referencedTableName="provider"
-                                 constraintName="FK_PRODUCT_PROVIDER" deferrable="false" initiallyDeferred="false" />
 
         <addForeignKeyConstraint baseColumnNames="id" baseTableName="meal"
                                  referencedColumnNames="id" referencedTableName="product"
