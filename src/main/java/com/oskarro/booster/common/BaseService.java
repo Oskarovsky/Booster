@@ -1,5 +1,7 @@
 package com.oskarro.booster.common;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,4 +19,5 @@ public interface BaseService<T extends BaseEntity<T, K>, K> {
     void deleteById(K id);
     Page<T> getPage(Pageable pageable);
     long count();
+    void loadDataFromJsonToDatabase(Resource resource, TypeReference<List<T>> typeReference);
 }
