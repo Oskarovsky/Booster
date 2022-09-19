@@ -1,16 +1,23 @@
 package com.oskarro.booster.common;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 public class BaseServiceBean<T extends BaseEntity<T, K>, K> implements BaseService<T, K> {
 
     protected BaseRepository<T, K> baseRepository;
+
+    ObjectMapper mapper = new ObjectMapper();
 
     public BaseServiceBean(BaseRepository<T, K> baseRepository) {
         this.baseRepository = baseRepository;
@@ -79,5 +86,16 @@ public class BaseServiceBean<T extends BaseEntity<T, K>, K> implements BaseServi
     @Override
     public long count() {
         return 0;
+    }
+
+    @Override
+    public void loadDataFromJsonToDatabase(Resource resource, TypeReference<List<T>> typeReference) {
+        try (InputStream inputStream = resource.getInputStream()) {
+            List<T> entities = mapper.readValue(inputStream, typeReference);
+            saveAll(entities);
+        } catch (IOException e) {
+            System.out.printf("Could not save entity in database: %s", e);
+            throw new RuntimeException(e);
+        }
     }
 }
