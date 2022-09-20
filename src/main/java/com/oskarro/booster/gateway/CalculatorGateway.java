@@ -1,6 +1,7 @@
 package com.oskarro.booster.gateway;
 
 import com.oskarro.booster.dto.CounterDto;
+import com.oskarro.booster.model.Customer;
 import com.oskarro.booster.model.Meal;
 import com.oskarro.booster.service.CalculatorService;
 import com.oskarro.booster.service.MealService;
@@ -30,8 +31,8 @@ public class CalculatorGateway {
         this.calculatorService = calculatorService;
     }
 
-    @GetMapping("/calculate")
-    public ResponseEntity<CounterDto> calculate(@RequestParam String startDate, @RequestParam String endDate) {
+    @GetMapping("/consumedIngredients")
+    public ResponseEntity<CounterDto> calculateConsumedIngredients(@RequestParam String startDate, @RequestParam String endDate) {
         List<Meal> meals = mealService.getMealFromPeriodOfTime(
                 LocalDateTime.parse(startDate),
                 LocalDateTime.parse(endDate)
@@ -40,6 +41,11 @@ public class CalculatorGateway {
         counterDto.setStartDate(LocalDateTime.parse(startDate));
         counterDto.setEndDate(LocalDateTime.parse(endDate));
         return new ResponseEntity<>(counterDto, HttpStatus.OK);
+    }
+
+    @PostMapping("/calculateComposition")
+    public ResponseEntity<CounterDto> calculateCompositionOfNutrients(@RequestBody Customer customer) {
+        return new ResponseEntity<>(calculatorService.calculateCompositionOfNutrients(customer), HttpStatus.OK);
     }
 
 
