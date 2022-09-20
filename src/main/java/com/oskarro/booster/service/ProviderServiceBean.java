@@ -16,22 +16,8 @@ import java.util.List;
 @Service
 public class ProviderServiceBean extends BaseServiceBean<Provider, Integer> implements ProviderService {
 
-    @Value("classpath:data/data-provider.json")
-    Resource resourceFile;
-
     public ProviderServiceBean(BaseRepository<Provider, Integer> baseRepository) {
         super(baseRepository);
     }
 
-    public void loadDataFromJsonToDatabase(final String jsonFile) {
-        ObjectMapper mapper = new ObjectMapper();
-        TypeReference<List<Provider>> typeReference = new TypeReference<List<Provider>>(){};
-        try (InputStream inputStream = resourceFile.getInputStream()) {
-            List<Provider> providers = mapper.readValue(inputStream, typeReference);
-            saveAll(providers);
-            System.out.println("Provider has been saved");
-        } catch (IOException e) {
-            System.out.println("Could not save providers to database from json file: " + e);
-        }
-    }
 }
