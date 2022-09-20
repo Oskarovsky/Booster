@@ -1,9 +1,6 @@
 package com.oskarro.booster.model;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import com.oskarro.booster.common.BaseEntity;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
@@ -22,6 +19,7 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Product implements Serializable, BaseEntity<Product, Integer> {
 
     @Id
@@ -42,12 +40,10 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
 
     private Double price;
 
-//    @ToString.Exclude
-//    @EqualsAndHashCode.Exclude
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "provider_id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @JsonIdentityReference(alwaysAsId = true)
     private Provider provider;
 
