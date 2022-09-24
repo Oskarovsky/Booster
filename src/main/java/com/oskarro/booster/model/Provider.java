@@ -39,6 +39,15 @@ public class Provider implements Serializable, BaseEntity<Provider, Integer> {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "provider")
     private Set<Product> products = new HashSet<>();
 
+    public void addProduct(Product product) {
+        if (product == null)
+            throw new NullPointerException("Could not add null Product");
+        if (product.getProvider() != null)
+            throw new IllegalStateException("Product is already assigned to an Provider");
+        products.add(product);
+        product.setProvider(this);
+    }
+
     public static Provider fromId(Integer providerId) {
         Provider provider = new Provider();
         provider.setId(providerId);

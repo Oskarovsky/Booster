@@ -13,4 +13,8 @@ public interface MealRepository extends BaseRepository<Meal, Integer> {
 
     List<Meal> findByDateTimeBetween(LocalDateTime startDateTime, LocalDateTime endDateTime);
 
+    List<Meal> findByDateTimeBetweenAndCustomerId(LocalDateTime startDateTime, LocalDateTime endDateTime, Integer customerId);
+
+    List<Meal> findByCustomerId(Integer customerId);
+
 }

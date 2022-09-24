@@ -43,9 +43,9 @@ public class CalculatorGateway {
         return new ResponseEntity<>(counterDto, HttpStatus.OK);
     }
 
-    @PostMapping("/calculateComposition")
-    public ResponseEntity<CounterDto> calculateCompositionOfNutrients(@RequestBody Customer customer) {
-        return new ResponseEntity<>(calculatorService.calculateCompositionOfNutrients(customer), HttpStatus.OK);
+    @PostMapping("/calculateTheNutrientsFromToday")
+    public ResponseEntity<CounterDto> calculateTheNutrientsFromToday(@RequestBody Customer customer) {
+        return new ResponseEntity<>(calculatorService.calculateTheNutrientsFromToday(customer), HttpStatus.OK);
     }
 
 
