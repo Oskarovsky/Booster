@@ -26,10 +26,11 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @NotNull(message = "Product must have a given name")
     @Size(min = 2, max = 255, message = "Name is required, maximum 255 characters")
     private String name;
 
+    @NotNull(message = "Energy field cannot be null")
     private Integer energy;
 
     private Double protein;
@@ -58,8 +59,8 @@ public class Product implements Serializable, BaseEntity<Product, Integer> {
         if (meal.getProduct() != null) {
             throw new IllegalStateException("Meal is already assigned to an Product");
         }
-        meal.setProduct(this);
         meals.add(meal);
+        meal.setProduct(this);
     }
 
     public void removeMeal(Meal meal) {

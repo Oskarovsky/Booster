@@ -10,6 +10,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -25,8 +26,13 @@ public class Meal implements Serializable, BaseEntity<Meal, Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "customer_id")
+    @JsonProperty("customerId")
+    private Integer customerId;
+
     private Double portion;
 
+    @NotNull(message = "DateTime attribute cannot be null")
     @Column(name = "datetime")
     private LocalDateTime dateTime;
 
@@ -44,6 +50,7 @@ public class Meal implements Serializable, BaseEntity<Meal, Integer> {
 
     @Override
     public void update(Meal source) {
+        this.customerId = source.getCustomerId();
         this.portion = source.getPortion();
         this.dateTime = source.getDateTime();
         this.product = source.getProduct();

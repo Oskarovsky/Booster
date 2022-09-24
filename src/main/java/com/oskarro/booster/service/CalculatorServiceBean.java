@@ -30,9 +30,23 @@ public class CalculatorServiceBean implements CalculatorService {
     }
 
     @Override
-    public CounterDto calculateCompositionOfNutrients(final Customer customer) {
+    public CounterDto calculateDietForCustomer(final Customer customer) {
         CounterDto dto = new CounterDto();
         // TODO calculate diet
         return dto;
     }
+
+    @Override
+    public CounterDto calculateTheNutrientsFromToday(final Customer customer) {
+        CounterDto dto = new CounterDto();
+        mealService.getMealsByCustomerFromToday(customer).forEach(t -> {
+            dto.setEnergy((int) (dto.getEnergy() + t.getProduct().getEnergy() * t.getPortion()));
+            dto.setFat(dto.getFat() + t.getProduct().getFat() * t.getPortion());
+            dto.setProtein(dto.getProtein() + t.getProduct().getProtein() * t.getPortion());
+            dto.setCarbs(dto.getCarbs() + t.getProduct().getCarbs() * t.getPortion());
+            dto.getMeals().add(t);
+        });
+        return dto;
+    }
+
 }
