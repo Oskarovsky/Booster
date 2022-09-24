@@ -26,7 +26,7 @@ public class Provider implements Serializable, BaseEntity<Provider, Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull
+    @NotNull(message = "Provider must have a given name")
     @Size(min = 2, max = 255, message = "Name is required, maximum 255 characters")
     private String name;
 
