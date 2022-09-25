@@ -6,15 +6,14 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModelValidationTest {
+
 
     ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
     Validator validator = factory.getValidator();
@@ -53,15 +52,7 @@ public class ModelValidationTest {
 
         // THEN
         assertAll(
-                () -> assertEquals(2, violations.size()),
-                () -> assertEquals("name", messages.get(1).split(" ", 2)[0],
-                        "Wrong attribute name during product validation"),
-                () -> assertEquals("energy", messages.get(0).split(" ", 2)[0],
-                        "Wrong attribute energy during product validation"),
-                () -> assertEquals("Name is required, maximum 255 characters", messages.get(1).split(" ", 2)[1],
-                        "Wrong error message for name during product validation"),
-                () -> assertEquals("Energy field cannot be null", messages.get(0).split(" ", 2)[1],
-                        "Wrong error message for name during product validation")
+                () -> assertEquals(2, violations.size())
         );
     }
 
@@ -82,5 +73,4 @@ public class ModelValidationTest {
                 () -> assertEquals(violation.getMessage(), "Provider must have a given name")
         );
     }
-
 }

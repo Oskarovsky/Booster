@@ -51,11 +51,6 @@ public class HibernateTest {
     }
 
     @Test
-    public void whenApplicationStarts_thenHibernateCreatesData() {
-
-    }
-
-    @Test
     public void test_storeLoadProduct_WithEntityManager() {
 
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("boosterPersistenceUnitTest");
