@@ -2,16 +2,15 @@ package com.oskarro.booster.repository;
 
 import com.oskarro.booster.model.Meal;
 import com.oskarro.booster.model.Product;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import com.oskarro.booster.model.Provider;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ActiveProfiles;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,12 +27,18 @@ public class MealRepositoryTest {
     @Autowired
     ProductRepository productRepository;
 
+    @Autowired
+    ProviderRepository providerRepository;
+
     @Test
     @Order(1)
     @Rollback(value = false)
     public void test_saveMealEntity_and_saveProductEntity() {
         // GIVEN (Input)
-        Product product = Product.builder().energy(420).protein(13.2).name("Bread").carbs(54.2).build();
+        providerRepository.saveAll(generateProviders());
+        List<Provider> all = providerRepository.findAll();
+        Product product = Product.builder().energy(420).protein(13.2).name("Bread").carbs(54.2).provider(all.get(0)).build();
+        product.setProvider(all.get(1));
         Product productCurrent = productRepository.save(product);
 
         // WHEN (Action)
@@ -103,5 +108,14 @@ public class MealRepositoryTest {
 
         // THEN (Output)
         assertThat(mealResult).isNull();
+    }
+
+    private static List<Provider> generateProviders() {
+        return Arrays.asList(
+                Provider.builder().name("FirstProv").build(),
+                Provider.builder().name("SecondProv").build(),
+                Provider.builder().name("ThirdProv").build(),
+                Provider.builder().name("ForthProv").build()
+        );
     }
 }
