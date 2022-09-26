@@ -2,6 +2,7 @@ package com.oskarro.booster;
 
 import com.oskarro.booster.model.Meal;
 import com.oskarro.booster.model.Product;
+import com.oskarro.booster.model.Provider;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -27,6 +28,7 @@ public class HibernateTest {
         Configuration configuration = new Configuration();
         configuration.configure().addAnnotatedClass(Meal.class);
         configuration.configure().addAnnotatedClass(Product.class);
+        configuration.configure().addAnnotatedClass(Provider.class);
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
         return configuration.buildSessionFactory(serviceRegistry);
     }
@@ -39,7 +41,8 @@ public class HibernateTest {
         Configuration configuration = new Configuration();
         configuration.configure()
                 .addAnnotatedClass(Product.class)
-                .addAnnotatedClass(Meal.class);
+                .addAnnotatedClass(Meal.class)
+                .addAnnotatedClass(Provider.class);
 
         Map<String, String> properties = new HashMap<>();
         Enumeration<?> propertyNames = configuration.getProperties().propertyNames();
@@ -59,14 +62,20 @@ public class HibernateTest {
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();
 
+            Provider provider = Provider.builder().name("TestProv").city("Warsaw").build();
+            entityManager.persist(provider);
+            entityManager.getTransaction().commit();
+
+            entityManager.getTransaction().begin();
             Product product = new Product();
             product.setName("Tomato");
             product.setEnergy(30);
+            product.setProvider((Provider) entityManager.createQuery("SELECT p from provider p").getResultList().get(0));
             entityManager.persist(product);
             entityManager.getTransaction().commit();
 
             entityManager.getTransaction().begin();
-            List<Product> products = entityManager.createQuery("SELECT p from Product p").getResultList();
+            List<Product> products = entityManager.createQuery("SELECT p from product p").getResultList();
 
             products.get(products.size() - 1).setEnergy(45);
             entityManager.getTransaction().commit();
@@ -90,8 +99,18 @@ public class HibernateTest {
 
             // GIVEN
             session.beginTransaction();
+            Provider provider = Provider.builder().name("TestProv").city("Warsaw").build();
+            session.persist(provider);
+            session.getTransaction().commit();
+
+            CriteriaQuery<Provider> criteriaQueryProvider = session.getCriteriaBuilder().createQuery(Provider.class);
+            criteriaQueryProvider.from(Provider.class);
+            Provider providerDb = session.createQuery(criteriaQueryProvider).getResultList().get(0);
+
+            session.beginTransaction();
             Product product = new Product();
             product.setEnergy(99);
+            product.setProvider(providerDb);
             product.setName("Bread");
             session.persist(product);
             session.getTransaction().commit();
