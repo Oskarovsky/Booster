@@ -11,6 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 
 import java.util.List;
@@ -32,6 +33,7 @@ public class BoosterApplication {
 	}
 
 	@Bean
+	@Profile("!test")
 	CommandLineRunner runner(final ProviderService providerService,
 							 final ProductService productService,
 							 final MealService mealService) {
