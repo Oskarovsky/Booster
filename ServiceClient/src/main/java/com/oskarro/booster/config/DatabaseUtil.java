@@ -1,7 +1,7 @@
 package com.oskarro.booster.config;
 
-import com.oskarro.booster.model.Meal;
-import com.oskarro.booster.model.Product;
+import com.oskarro.apiclient.model.Meal;
+import com.oskarro.apiclient.model.Product;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;

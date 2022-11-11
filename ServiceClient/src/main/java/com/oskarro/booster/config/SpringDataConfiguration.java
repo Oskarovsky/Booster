@@ -69,7 +69,7 @@ public class SpringDataConfiguration {
         properties.put("hibernate.hbm2ddl.auto", "create");
         localContainerEntityManagerFactoryBean.setJpaProperties(properties);
         localContainerEntityManagerFactoryBean.setJpaVendorAdapter(jpaVendorAdapter());
-        localContainerEntityManagerFactoryBean.setPackagesToScan("com.oskarro.booster");
+        localContainerEntityManagerFactoryBean.setPackagesToScan("com.oskarro.apiclient.model");
         return localContainerEntityManagerFactoryBean;
     }
 
@@ -79,7 +79,7 @@ public class SpringDataConfiguration {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.oskarro.booster.model");
+        sessionFactory.setPackagesToScan("com.oskarro.apiclient.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
@@ -93,7 +93,6 @@ public class SpringDataConfiguration {
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         hibernateProperties.setProperty("hibernate.connection.url", "jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false");

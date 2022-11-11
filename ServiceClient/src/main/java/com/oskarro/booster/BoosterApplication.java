@@ -1,7 +1,6 @@
 package com.oskarro.booster;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.oskarro.booster.service.MealService;
 import com.oskarro.booster.service.ProductService;
 import com.oskarro.booster.service.ProviderService;
 import org.springframework.beans.factory.annotation.Value;
@@ -31,8 +30,7 @@ public class BoosterApplication {
 	@Bean
 	@Profile("!test")
 	CommandLineRunner runner(final ProviderService providerService,
-							 final ProductService productService,
-							 final MealService mealService) {
+							 final ProductService productService) {
 		return args -> {
 			providerService.loadDataFromJsonToDatabase(resourceFileProvider, new TypeReference<>() {});
 			productService.loadDataFromJsonToDatabase(resourceFileProduct, new TypeReference<>() {});
