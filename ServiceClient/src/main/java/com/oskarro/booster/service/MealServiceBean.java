@@ -1,9 +1,9 @@
 package com.oskarro.booster.service;
 
-import com.oskarro.booster.common.BaseServiceBean;
-import com.oskarro.booster.model.Customer;
-import com.oskarro.booster.model.Meal;
+import com.oskarro.apiclient.model.Customer;
+import com.oskarro.apiclient.model.Meal;
 import com.oskarro.booster.repository.MealRepository;
+import com.oskarro.commons.common.BaseServiceBean;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

@@ -1,9 +1,8 @@
 package com.oskarro.booster.service;
 
-import com.oskarro.booster.common.BaseServiceBean;
-import com.oskarro.booster.model.Product;
-import com.oskarro.booster.common.BaseRepository;
+import com.oskarro.apiclient.model.Product;
 import com.oskarro.booster.repository.ProductRepository;
+import com.oskarro.commons.common.BaseServiceBean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

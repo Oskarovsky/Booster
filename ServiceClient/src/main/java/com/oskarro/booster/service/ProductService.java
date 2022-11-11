@@ -1,7 +1,7 @@
 package com.oskarro.booster.service;
 
-import com.oskarro.booster.common.BaseService;
-import com.oskarro.booster.model.Product;
+import com.oskarro.apiclient.model.Product;
+import com.oskarro.commons.common.BaseService;
 
 import java.util.List;
 

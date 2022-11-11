@@ -1,10 +1,8 @@
 package com.oskarro.booster.gateway;
 
-import com.oskarro.booster.common.BaseGateway;
-import com.oskarro.booster.model.Meal;
-import com.oskarro.booster.model.Product;
-import com.oskarro.booster.common.BaseService;
-import org.springframework.http.ResponseEntity;
+import com.oskarro.apiclient.model.Product;
+import com.oskarro.commons.common.BaseGateway;
+import com.oskarro.commons.common.BaseService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

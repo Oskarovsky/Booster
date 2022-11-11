@@ -20,6 +20,8 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation group: 'org.apache.kafka', name: 'kafka-clients', version: '3.3.1'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -27,4 +29,8 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+task prepareKotlinBuildScriptModel {
+
 }

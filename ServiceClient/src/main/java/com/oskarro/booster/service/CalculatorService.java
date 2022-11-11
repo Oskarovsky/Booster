@@ -1,8 +1,8 @@
 package com.oskarro.booster.service;
 
+import com.oskarro.apiclient.model.Customer;
+import com.oskarro.apiclient.model.Meal;
 import com.oskarro.booster.dto.CounterDto;
-import com.oskarro.booster.model.Customer;
-import com.oskarro.booster.model.Meal;
 
 import java.util.List;
 

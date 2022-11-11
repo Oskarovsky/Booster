@@ -1,8 +1,8 @@
 package com.oskarro.booster.service;
 
-import com.oskarro.booster.common.BaseService;
-import com.oskarro.booster.model.Customer;
-import com.oskarro.booster.model.Meal;
+import com.oskarro.apiclient.model.Customer;
+import com.oskarro.apiclient.model.Meal;
+import com.oskarro.commons.common.BaseService;
 
 import java.time.LocalDateTime;
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.oskarro.booster.dto;
 
-import com.oskarro.booster.model.Meal;
+import com.oskarro.apiclient.model.Meal;
 import lombok.*;
 
 import java.time.LocalDateTime;

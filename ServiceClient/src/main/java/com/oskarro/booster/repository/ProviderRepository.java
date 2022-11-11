@@ -1,7 +1,7 @@
 package com.oskarro.booster.repository;
 
-import com.oskarro.booster.common.BaseRepository;
-import com.oskarro.booster.model.Provider;
+import com.oskarro.apiclient.model.Provider;
+import com.oskarro.commons.common.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository

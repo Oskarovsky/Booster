@@ -1,8 +1,7 @@
 package com.oskarro.booster.repository;
 
-import com.oskarro.booster.common.BaseRepository;
-import com.oskarro.booster.model.Meal;
-import com.oskarro.booster.model.Product;
+import com.oskarro.apiclient.model.Meal;
+import com.oskarro.commons.common.BaseRepository;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

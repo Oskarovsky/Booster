@@ -19,6 +19,9 @@ repositories {
 }
 
 dependencies {
+    implementation project(':ApiClient')
+    implementation project(':Commons')
+
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -33,6 +36,7 @@ dependencies {
     implementation 'org.liquibase:liquibase-core'
     implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.11'
     implementation group: 'joda-time', name: 'joda-time', version: '2.3'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.14.0'
 
 
 //	implementation 'org.flywaydb:flyway-core'
@@ -46,4 +50,8 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+task prepareKotlinBuildScriptModel {
+
 }

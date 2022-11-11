@@ -1,6 +1,6 @@
 package com.oskarro.booster.gateway;
 
-import com.oskarro.booster.model.Provider;
+import com.oskarro.apiclient.model.Provider;
 import com.oskarro.booster.service.CalculatorService;
 import com.oskarro.booster.service.MealService;
 import com.oskarro.booster.service.ProductService;

@@ -1,8 +1,6 @@
 package com.oskarro.booster;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.oskarro.booster.model.Product;
-import com.oskarro.booster.model.Provider;
 import com.oskarro.booster.service.MealService;
 import com.oskarro.booster.service.ProductService;
 import com.oskarro.booster.service.ProviderService;
@@ -13,8 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
-
-import java.util.List;
 
 @SpringBootApplication
 public class BoosterApplication {
