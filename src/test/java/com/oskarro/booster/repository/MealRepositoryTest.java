@@ -43,7 +43,7 @@ public class MealRepositoryTest {
 
         // WHEN (Action)
         Meal meal = Meal.builder().portion(2d).dateTime(LocalDateTime.now()).product(productCurrent).build();
-        Meal mealCurrent = mealRepository.save(meal);
+        mealRepository.save(meal);
 
         Product productResult = productRepository.findById(1).get();
         Meal mealResult = mealRepository.findById(1).get();
