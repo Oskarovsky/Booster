@@ -1,0 +1,14 @@
+[
+  {
+    "username": "UserReadOnly",
+    "password": "123456"
+  },
+  {
+    "username": "UserWriteOnly",
+    "password": "123456"
+  },
+  {
+    "username": "Admin",
+    "password": "123456"
+  }
+]

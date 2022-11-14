@@ -11,9 +11,9 @@ import java.io.Serializable;
 
 @Getter
 @Setter
+@Entity(name = "role")
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
 public class Role implements Serializable, BaseEntity<Role, Integer> {
 
     @Id

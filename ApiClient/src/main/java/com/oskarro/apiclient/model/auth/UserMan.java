@@ -16,7 +16,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable, BaseEntity<User, Integer> {
+public class UserMan implements Serializable, BaseEntity<UserMan, Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,13 +38,14 @@ public class User implements Serializable, BaseEntity<User, Integer> {
 
 
     @Override
-    public void update(User source) {
-
+    public void update(UserMan source) {
+        this.username = source.username;
+        this.roles = source.roles;
     }
 
     @Override
-    public User createNewInstance() {
-        User newInstance = new User();
+    public UserMan createNewInstance() {
+        UserMan newInstance = new UserMan();
         newInstance.update(this);
         return newInstance;
     }

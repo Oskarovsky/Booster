@@ -1,0 +1,14 @@
+[
+  {
+    "id": "1",
+    "name": "ROLE_READ"
+  },
+  {
+    "id": "2",
+    "name": "ROLE_WRITE"
+  },
+  {
+    "id": "3",
+    "name": "ROLE_ADMIN"
+  }
+]
