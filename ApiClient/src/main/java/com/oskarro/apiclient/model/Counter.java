@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Counter implements Serializable, BaseEntity<Counter, Integer> {
+    public class Counter implements Serializable, BaseEntity<Counter, Integer> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
