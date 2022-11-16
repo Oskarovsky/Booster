@@ -5,5 +5,6 @@ import com.oskarro.commons.common.BaseService;
 
 public interface UserService extends BaseService<UserMan, Integer> {
 
+    UserMan getByUsername(String username);
 
 }

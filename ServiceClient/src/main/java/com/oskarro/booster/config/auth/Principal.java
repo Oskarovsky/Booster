@@ -1,5 +1,6 @@
 package com.oskarro.booster.config.auth;
 
+import com.oskarro.apiclient.model.auth.Role;
 import com.oskarro.apiclient.model.auth.UserMan;
 import lombok.EqualsAndHashCode;
 import org.springframework.security.core.GrantedAuthority;
@@ -7,8 +8,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serial;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @EqualsAndHashCode
@@ -41,6 +44,11 @@ public class Principal implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<Role> roles = userMan.getRoles();
+        List<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        for (Role role: roles) {
+            authorities.add(new SimpleGrantedAuthority(role.getName().name()));
+        }
         return authorities;
     }
 

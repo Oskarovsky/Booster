@@ -1,6 +1,7 @@
 package com.oskarro.booster;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.oskarro.apiclient.model.auth.UserMan;
 import com.oskarro.booster.repository.UserRepository;
 import com.oskarro.booster.service.ProductService;
 import com.oskarro.booster.service.ProviderService;
@@ -15,6 +16,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.io.Resource;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 
 @SpringBootApplication
@@ -61,12 +64,19 @@ public class BoosterApplication {
 	}
 
 	private void loadUserRoles(UserService userService, RoleService roleService) {
-		userService
-				.get()
-				.forEach(t -> {
-					t.setRoles(new HashSet<>(roleService.get()));
-					userRepository.save(t);
-				});
+		// READ ONLY
+		UserMan userReadOnly = userService.getByUsername("UserReadOnly");
+		userReadOnly.setRoles(new HashSet<>(Collections.singleton(roleService.get().get(0))));
+
+		// READ & WRITE
+		UserMan userWriteOnly = userService.getByUsername("UserWriteOnly");
+		userWriteOnly.setRoles(new HashSet<>(Collections.singleton(roleService.get().get(1))));
+
+		// ALL ACCESS
+		UserMan admin = userService.getByUsername("Admin");
+		admin.setRoles(new HashSet<>(Collections.singleton(roleService.get().get(2))));
+
+		userRepository.saveAll(Arrays.asList(userReadOnly, userWriteOnly, admin));
 	}
 
 }
